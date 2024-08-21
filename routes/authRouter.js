@@ -4,6 +4,7 @@ var router = express.Router();
 
 // import the controller : 
 const authController = require('../Controllers/authController');
+const upload = require("../middlewares/uploadFile")
 
 /* GET users listing. */
 // tista3mel l fct li sna3tha fil controller 
@@ -17,7 +18,7 @@ router.get('/searchUserByName3',authController.searchUserByName3 );
 // router.get('/searchUserByNameSort',authController.searchUserByNameSort );
 
 router.post('/addUserClient',authController.addUserClient );
-// router.post('/addUserClientwithImg',upload.single("image_user"),authController.addUserClientwithImg );
+router.post('/addUserClientwithImg',upload.single("image_user"),authController.addUserClientwithImg );
 router.post('/addUserAdmin',authController.addUserAdmin );
 
 router.put('/updateUser/:id',authController.updateUser );
