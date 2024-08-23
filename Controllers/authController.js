@@ -129,6 +129,7 @@ module.exports.addUserAdmin = async (req, res) => {
   }
 };
 
+// mecanisme mta3 l update ychid e data il bch ysirilha l update { name, surname, age } bch titkraza b autre { name, surname, age } sen fou mil valeur mta3 e data
 module.exports.updateUser = async (req, res) => {
   try {
     // Log the incoming request body for debugging(affiche e data li jet min postman)
@@ -205,11 +206,29 @@ module.exports.searchUserByName3 = async (req, res) => {
   try {
     // tiktib fil postman fil body {"name":"moka"}
     console.log(req.body);
-    const { name} = req.body;
-   
+    const { name } = req.body;
+
     const usersList = await userModel.find({
       name: { $regex: name, $options: "i" },
     });
+    res.status(200).json(usersList);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+// tala3 fil erreur hethi idk why: {"message": "$regex has to be a string"}
+
+module.exports.searchUserByNameSort = async (req, res) => {
+  try {
+    // tiktib fil postman fil body {"name":"moka"}
+    console.log(req.body);
+    const { name } = req.body;
+
+    const usersList = await userModel
+      .find({
+        name: { $regex: name, $options: "i" },
+      })
+      .sort({age : 1});
     res.status(200).json(usersList);
   } catch (error) {
     res.status(500).json({ message: error.message });

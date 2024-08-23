@@ -15,7 +15,7 @@ router.get('/getUserById/:id',authController.getUserById );
 router.get('/searchUserByName2/:name',authController.searchUserByName2);
 router.get('/searchUserByName',authController.searchUserByName );
 router.get('/searchUserByName3',authController.searchUserByName3 );
-// router.get('/searchUserByNameSort',authController.searchUserByNameSort );
+router.get('/searchUserByNameSort',authController.searchUserByNameSort );
 
 router.post('/addUserClient',authController.addUserClient );
 // router.post('/addUserClientwithImg',upload.single("image_user"),authController.addUserClientwithImg );
