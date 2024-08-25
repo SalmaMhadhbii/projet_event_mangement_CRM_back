@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema(
     role: { type: String, enum: ["admin", "client"] },
     // etat bch ta3rif active wale
     etat: { type: Boolean },
-    age: Number
+    age: Number,
+
+    events:[{type:mongoose.Schema.Types.ObjectId,ref:'Event'}]
   },
   { timestamp: true }
 );
