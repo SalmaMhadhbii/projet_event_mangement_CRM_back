@@ -8,7 +8,7 @@ const userModel = require("../Models/userSchema");
 module.exports.getAllUsers = async (req, res) => {
   try {
     // await 5ater bch njbou mil base
-    const usersList = await userModel.find();
+    const usersList = await userModel.find().populate("events");
     // Send the list of users as a JSON response with a 200 status code
     res.status(200).json({ usersList });
   } catch (error) {
@@ -25,7 +25,7 @@ module.exports.getUserById = async (req, res) => {
     const { id } = req.params;
     //const id = req.params.id
 
-    const user = await userModel.findById(id);
+    const user = await userModel.findById(id).populate("events");
     res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ message: error.message });
